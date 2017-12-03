@@ -1,4 +1,4 @@
-import mock_data
+from uz_api import mock_data
 from itertools import chain
 from uz_api.models import Station, Train, Coach
 from uz_api.serializers import Serializer
