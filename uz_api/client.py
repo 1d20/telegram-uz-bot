@@ -1,15 +1,16 @@
-from . import mock_data
+import mock_data
 from itertools import chain
-from .models import Station, Train, Coach
-from .serializers import Serializer
+from uz_api.models import Station, Train, Coach
+from uz_api.serializers import Serializer
+from uz_api.booking import BookingClient
 
 
 class ClientInteface:
     def __init__(self, language='en'):
-        pass
+        self.client = BookingClient()
 
     def stations(self, name):
-        stations = [Station.from_dict(station) for station in mock_data.STATIONS['value']]
+        stations = [Station.from_dict(station) for station in self.client.get_stations(name)]
         return stations
 
     def trains(self, station_from_id, station_to_id, date_dep, time_dep="00:00", time_dep_till=None,
@@ -39,12 +40,13 @@ if __name__ == '__main__':
     client = ClientInteface()
 
     print(client.stations('Ky'))
-    print(Serializer.serialize(client.stations('Ky')))
-
-    print(client.trains(100, 42, '01.01.2000'))
-    print(Serializer.serialize(client.trains(100, 42, '01.01.2000')))
-
-    print(client.coaches(100, 42, 1463224100, '043', 3, 'C2'))
-    print(Serializer.serialize(client.coaches(100, 42, 1463224100, '043', 3, 'C2')))
-
-    print(client.seats(100, 42, 1463224100, '043', 1, 2, 19, 1))
+    print(client.stations('Lv'))
+    # print(Serializer.serialize(client.stations('Ky')))
+    #
+    # print(client.trains(100, 42, '01.01.2000'))
+    # print(Serializer.serialize(client.trains(100, 42, '01.01.2000')))
+    #
+    # print(client.coaches(100, 42, 1463224100, '043', 3, 'C2'))
+    # print(Serializer.serialize(client.coaches(100, 42, 1463224100, '043', 3, 'C2')))
+    #
+    # print(client.seats(100, 42, 1463224100, '043', 1, 2, 19, 1))

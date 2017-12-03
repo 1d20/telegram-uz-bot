@@ -103,7 +103,7 @@ class Station(object):
 
     @classmethod
     def from_dict(cls, dikt):
-        return cls(dikt['station_id'], dikt['title'])
+        return cls(dikt['value'], dikt['title'])
 
     def to_dict(self):
         return dict(

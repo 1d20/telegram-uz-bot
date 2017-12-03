@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='uz-api',
-    version='1.0',
+    version='1.1',
     description='Python UZ API',
     author='Anton Adamiv',
     author_email='detonavomek@gmail.com',
