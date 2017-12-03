@@ -9,6 +9,7 @@ pip install git+git://github.com/1d20/uz-api
 ## Usage
 
 ```python
+>>> from uz_api import ClientInteface, Serializer
 >>> client = ClientInteface()
 >>> print(client.stations('Ky'))
 [Station('2200001', 'Kyiv'), Station('2201180', 'Kyivska Rusanivka'), Station('2031278', 'Kyj'), Station('2011189', 'Kykshor')]
