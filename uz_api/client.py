@@ -1,7 +1,7 @@
-import mock_data
+from . import mock_data
 from itertools import chain
-from models import Station, Train, Coach
-from serializers import Serializer
+from .models import Station, Train, Coach
+from .serializers import Serializer
 
 
 class ClientInteface:
